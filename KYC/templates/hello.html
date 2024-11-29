@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #000080;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            height:50px;
+
+            text-align:center;
+
+        }
+
+        /* Navigation links */
+        .navbar a {
+            color: white;
+            float: right;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* On hover, the links will change color */
+        .navbar a:hover {
+            background-color: white;
+            color: #000080;
+            font-weight: bold;
+        }
+
+        /* Create a "hamburger" icon for the responsive navigation menu */
+        .navbar .icon {
+            display: none;
+            float: right;
+        }
+
+        /* Style the icon */
+        .navbar .icon:hover {
+            background-color: transparent;
+        }
+
+        /* Show the navigation links when the screen is wide enough */
+        @media screen and (min-width: 768px) {
+            .navbar a {
+                display: inline-block;
+            }
+
+            .navbar .icon {
+                display: none;
+            }
+        }
+
+        /* Show the "hamburger" icon and hide the navigation links when the screen is narrow */
+        @media screen and (max-width: 767px) {
+            .navbar a:not(.icon) {
+                display: none;
+            }
+
+            .navbar a.icon {
+                display: block;
+            }
+
+            /* Show the navigation links when the icon is clicked (toggle between showing and hiding) */
+            .navbar.responsive {
+                position: relative;
+            }
+
+            .navbar.responsive a {
+                display: block;
+                text-align: left;
+            }
+        }
+        .popup-modal{
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f5f5f5;
+            margin-top: 40px;
+        }
+
+         button  {
+            padding: 10px 10px;
+            margin-top:25px;
+            background-color: #000080;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+body {
+				background: linear-gradient(90deg, #C7C5F4, #776BCC);
+			}
+
+
+    </style>
+</head>
+<body>
+
+
+    <div class="navbar" id="myNavbar">
+        <a href="#home">Home</a>
+
+        <a href="#contact">Contact Us</a>
+        <a href="#about">About Us</a>
+        <a href="#logout">Log Out</a>
+        <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+            &#9776;
+        </a>
+    </div>
+
+
+    <!-- Add this code to your 'dashboard.html' template -->
+
+
+ <div class="popup-modal">
+        <div id="popup-modal" class="modal">
+    <div id="modal-content">
+        <span class="container" ></span>
+        <p>Data stored successfully.</p>
+        <button id="next-page-button">Next Page</button>
+    </div>
+</div>
+    </div>
+
+<script>
+    // JavaScript to show the pop-up message
+    const modal = document.getElementById('popup-modal');
+    const button = document.getElementById('next-page-button');
+    const span = document.getElementById('close-popup');
+
+    button.onclick = function() {
+       window.location.href = "/capture"; // Replace 'next_page' with your actual route
+    }
+
+    span.onclick = function() {
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>
